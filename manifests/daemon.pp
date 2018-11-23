@@ -241,8 +241,9 @@ define prometheus::daemon (
   }
 
   $real_provider = $init_style ? {
-    'sles'  => 'redhat',  # mimics puppet's default behaviour
-    'sysv'  => 'redhat',  # all currently used cases for 'sysv' are redhat-compatible
+    'sles'    => 'redhat',  # mimics puppet's default behaviour
+    'sysv'    => 'redhat',  # all currently used cases for 'sysv' are redhat-compatible
+    'service' => 'freebsd',
     default => $init_style,
   }
 
