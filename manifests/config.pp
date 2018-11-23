@@ -104,11 +104,11 @@ class prometheus::config {
         }
       }
       'freebsd' : {
-        file { "/etc/rc.conf.d/${name}":
+        file { "/etc/rc.conf.d/prometheus":
           mode => '0444',
           owner => 'root',
           group => 'wheel',
-          content => 'prometheus_enable="YES"',
+          content => template('prometheus/prometheus.freebsd.erb'),
           notify => $notify_service,
         }
       }
