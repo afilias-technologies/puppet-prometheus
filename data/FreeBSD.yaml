@@ -6,3 +6,6 @@ prometheus::install_method: 'package'
 prometheus::config_dir: '/usr/local/etc/prometheus'
 prometheus::alertmanager::config_dir: '/usr/local/etc/alertmanager'
 prometheus::blackbox_exporter::config_file: '/usr/local/etc/blackbox-exporter.yaml'
+
+prometheus::alertmanager::config_dir: '/usr/local/etc/alertmanager'
+prometheus::alertmanager::config_file: "%{hiera('prometheus::alertmanager::config_dir')}/alertmanager.yml"
