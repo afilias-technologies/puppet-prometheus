@@ -1,0 +1,8 @@
+---
+prometheus::version: '2.4.2'
+prometheus::env_file_path: '/etc/defaults'
+prometheus::init_style: 'freebsd'
+prometheus::install_method: 'package'
+prometheus::config_dir: '/usr/local/etc/prometheus'
+prometheus::alertmanager::config_dir: '/usr/local/etc/alertmanager'
+prometheus::blackbox_exporter::config_file: '/usr/local/etc/blackbox-exporter.yaml'

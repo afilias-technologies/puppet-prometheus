@@ -210,6 +210,15 @@ define prometheus::daemon (
           notify  => $notify_service,
         }
       }
+      'freebsd' : {
+        file { "/etc/rc.conf.d/${name}":
+          mode => '0444',
+          owner => 'root',
+          group => 'wheel',
+          content => "${name}_enable=\"YES\"",
+          notify => $notify_service,
+        }
+      }
       default : {
         fail("I don't know how to create an init script for style ${init_style}")
       }
@@ -220,7 +229,7 @@ define prometheus::daemon (
     file { "${env_file_path}/${name}":
       mode    => '0644',
       owner   => 'root',
-      group   => 'root',
+      group   => 0,
       content => template('prometheus/daemon.env.erb'),
       notify  => $notify_service,
     }

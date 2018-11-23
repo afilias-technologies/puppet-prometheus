@@ -103,6 +103,15 @@ class prometheus::config {
           content => template('prometheus/prometheus.launchd.erb'),
         }
       }
+      'freebsd' : {
+        file { "/etc/rc.conf.d/${name}":
+          mode => '0444',
+          owner => 'root',
+          group => 'wheel',
+          content => 'prometheus_enable="YES"',
+          notify => $notify_service,
+        }
+      }
       default : {
         fail("I don't know how to create an init script for style ${prometheus::server::init_style}")
       }
