@@ -22,9 +22,9 @@ procname="/usr/local/bin/<%= @name %>"
 command_args="-p ${pidfile} /usr/bin/env ${procname} \
     <%= @options %> >> ${<%= @name %>_log_file} 2>&1"
 
-start_precmd=startprecmd
+start_precmd=<%= @name %>_startprecmd
 
-startprecmd()
+<%= @name %>_startprecmd()
 {
     if [ ! -e ${pidfile} ]; then
         install \
