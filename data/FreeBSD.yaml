@@ -9,3 +9,6 @@ prometheus::blackbox_exporter::config_file: '/usr/local/etc/blackbox-exporter.ya
 
 prometheus::alertmanager::config_dir: '/usr/local/etc/alertmanager'
 prometheus::alertmanager::config_file: "%{hiera('prometheus::alertmanager::config_dir')}/alertmanager.yml"
+
+prometheus::node_exporter::user: 'nobody'
+prometheus::node_exporter::group: 'nobody'
