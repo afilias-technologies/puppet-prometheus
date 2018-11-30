@@ -12,8 +12,8 @@ rcvar=<%= @name %>_enable
 
 load_rc_config $name
 
-: ${<%= @name %>_user:=prometheus}
-: ${<%= @name %>_group:=prometheus}
+: ${<%= @name %>_user:=<%= @user %>}
+: ${<%= @name %>_group:=<%= @group %>}
 : ${<%= @name %>_log_file=/var/log/<%= @name %>.log}
 
 pidfile=/var/run/<%= @name %>.pid
