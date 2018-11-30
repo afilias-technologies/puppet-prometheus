@@ -12,3 +12,6 @@ prometheus::alertmanager::config_file: "%{hiera('prometheus::alertmanager::confi
 
 prometheus::node_exporter::user: 'nobody'
 prometheus::node_exporter::group: 'nobody'
+
+prometheus::blackbox_exporter::user: 'prometheus'
+prometheus::blackbox_exporter::group: 'prometheus'
