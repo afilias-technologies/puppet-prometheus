@@ -16,6 +16,16 @@ prometheus::alertmanager::config_file: "%{hiera('prometheus::alertmanager::confi
 
 prometheus::node_exporter::user: 'nobody'
 prometheus::node_exporter::group: 'nobody'
+prometheus::node_exporter::manage_user : false
+prometheus::node_exporter::manage_group : false
+prometheus::node_exporter::extra_options : '--collector.textfile.directory=/var/tmp/node_exporter'
 
 prometheus::blackbox_exporter::user: 'prometheus'
 prometheus::blackbox_exporter::group: 'prometheus'
+
+prometheus::redis_exporter::user: 'nobody'
+prometheus::redis_exporter::group: 'nobody'
+prometheus::redis_exporter::manage_user : false
+prometheus::redis_exporter::manage_group : false
+prometheus::redis_exporter::addr:
+  - 'localhost:6379'
