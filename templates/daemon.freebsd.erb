@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# PROVIDE: <%= @name %>
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name=<%= @name %>
+desc="<%= @name %> for use with Prometheus"
+rcvar=<%= @name %>_enable
+
+load_rc_config $name
+
+: ${<%= @name %>_user:=prometheus}
+: ${<%= @name %>_group:=prometheus}
+: ${<%= @name %>_log_file=/var/log/<%= @name %>.log}
+
+pidfile=/var/run/<%= @name %>.pid
+command=/usr/sbin/daemon
+procname="/usr/local/bin/<%= @name %>"
+command_args="-p ${pidfile} /usr/bin/env ${procname} \
+    <%= @options %> >> ${<%= @name %>_log_file} 2>&1"
+
+start_precmd=startprecmd
+
+startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install \
+            -o ${<%= @name %>_user} \
+            -g ${<%= @name %>_group} \
+            /dev/null ${pidfile};
+    else
+        chown ${<%= @name %>_user}:${<%= @name %>_group} ${pidfile};
+    fi
+    if [ ! -e ${<%= @name %>_log_file} ]; then
+        install \
+            -o ${<%= @name %>_user} \
+            -g ${<%= @name %>_group} \
+            -m 640 \
+            /dev/null ${<%= @name %>_log_file};
+    else
+        chown ${<%= @name %>_user}:${<%= @name %>_group} ${<%= @name %>_log_file};
+    fi
+}
+
+run_rc_command "$1"

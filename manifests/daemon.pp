@@ -211,12 +211,12 @@ define prometheus::daemon (
         }
       }
       'freebsd' : {
-        file { "/etc/rc.conf.d/${name}":
-          mode => '0444',
-          owner => 'root',
-          group => 'wheel',
-          content => "${name}_enable=\"YES\"",
-          notify => $notify_service,
+        file { "/usr/local/etc/rc.d/${name}":
+          mode    => '0444',
+          owner   => 'root',
+          group   => 'wheel',
+          content => template('prometheus/daemon.freebsd.erb'),
+          notify  => $notify_service,
         }
       }
       default : {
