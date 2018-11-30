@@ -12,6 +12,7 @@ rcvar=<%= @name %>_enable
 
 load_rc_config $name
 
+: ${<%= @name %>_enable:="NO"}
 : ${<%= @name %>_user:=<%= @user %>}
 : ${<%= @name %>_group:=<%= @group %>}
 : ${<%= @name %>_log_file=/var/log/<%= @name %>.log}
