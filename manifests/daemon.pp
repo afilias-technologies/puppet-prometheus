@@ -212,7 +212,7 @@ define prometheus::daemon (
       }
       'freebsd' : {
         file { "/usr/local/etc/rc.d/${name}":
-          mode    => '0666',
+          mode    => '0555',
           owner   => 'root',
           group   => 'wheel',
           content => template('prometheus/daemon.freebsd.erb'),
