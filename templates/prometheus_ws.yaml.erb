@@ -1,0 +1,29 @@
+<% websites.sort.each do |website, values| -%>
+<%= values["alias.1"] %>
+<%= values["alias.2"] %>
+
+- job_name: <%= website %> ipv4
+  metrics_path: "/probe"
+  params:
+    module:
+      - http_2xx
+  static_configs:
+    - targets:
+      - https://<%= website %>
+      - http://<%= website %>
+    <% values["aliases"].each do |alias| -%>
+      - https://<%= alias %>
+      - http://<%= alias %>
+    <% end -%>
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: ws-us-east-prom-1.afilias.tech:9115
+<% end -%>
+
+
+
+
