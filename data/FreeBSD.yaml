@@ -11,6 +11,7 @@ prometheus::blackbox_exporter::user: 'prometheus'
 prometheus::blackbox_exporter::manage_user : false
 prometheus::blackbox_exporter::manage_group : false
 
+prometheus::alertmanager::version: '0.16.2'
 prometheus::alertmanager::config_dir: '/usr/local/etc/alertmanager'
 prometheus::alertmanager::config_file: "%{hiera('prometheus::alertmanager::config_dir')}/alertmanager.yml"
 
