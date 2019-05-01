@@ -30,3 +30,13 @@ prometheus::redis_exporter::manage_user : false
 prometheus::redis_exporter::manage_group : false
 prometheus::redis_exporter::addr:
   - 'localhost:6379'
+
+prometheus::sachet::config_file: '/usr/local/etc/sachet/config.yaml'
+prometheus::download_extension: 'tar.gz'
+prometheus::download_url_base: 'https://example.com'
+prometheus::extra_groups: []
+prometheus::group: 'nobody'
+prometheus::package_ensure: 'latest'
+prometheus::package_name: 'sachet'
+prometheus::user: 'nobody'
+prometheus::version: '0.2.0'
