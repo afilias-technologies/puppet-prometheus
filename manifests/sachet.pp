@@ -42,7 +42,7 @@ class prometheus::sachet (
         owner  => $user,
         group  => $group,
         mode   => $config_mode,
-        content => template('prometheus/sachet.config.yaml.erb'),
+        content => template('prometheus/sachet.yaml.erb'),
         notify  => $service,
     }
     prometheus::daemon { $service_name :
