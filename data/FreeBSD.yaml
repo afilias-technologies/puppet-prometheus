@@ -30,3 +30,5 @@ prometheus::redis_exporter::manage_user : false
 prometheus::redis_exporter::manage_group : false
 prometheus::redis_exporter::addr:
   - 'localhost:6379'
+
+prometheus::sachet::config_dir: '/usr/local/etc/sachet'

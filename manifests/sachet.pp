@@ -5,9 +5,11 @@
 class prometheus::sachet (
     String $arch                   = $prometheus::real_arch,
     String $bin_dir                = $prometheus::bin_dir,
+    String $config_dir,
     Hash $providers,
     Array $receivers,
     Array[String] $templates,
+    Array $template_files,
     String $config_file,
     String $config_mode            = $prometheus::config_mode,
     String $download_extension,
@@ -51,6 +53,7 @@ class prometheus::sachet (
         content => template('prometheus/sachet.yaml.erb'),
         notify  => $service,
     }
+
     prometheus::daemon { $service_name :
         install_method     => $install_method,
         version            => $version,
@@ -71,6 +74,16 @@ class prometheus::sachet (
         service_ensure     => $service_ensure,
         service_enable     => $service_enable,
         manage_service     => $manage_service,
+    }
+
+    $template_files.each |$template_file| {
+        file { "${config_dir}/templates/0.tmpl" :
+            owner   => root,
+            group   => 0,
+            mode    => '0644',
+            content => "${template_file}",
+            nodify  => $service,
+        }
     }
 
 }
