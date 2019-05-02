@@ -117,6 +117,14 @@ define prometheus::daemon (
           target => "/opt/${name}-${version}.${os}-${arch}/${name}",
       }
     }
+    'file' : {
+      file { "${bin_dir}/${name}":
+        owner => 'root',
+        group => 0,
+        mode  => '0755',
+        source => "puppet:///modules/prometheus/${os}.sachet",
+      }
+    }
     'package': {
       package { $package_name:
         ensure => $package_ensure,
