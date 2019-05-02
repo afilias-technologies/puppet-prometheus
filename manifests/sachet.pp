@@ -76,7 +76,14 @@ class prometheus::sachet (
         manage_service     => $manage_service,
     }
 
-    $template_files.each |$template_file| {
+    file { "${config_dir}/templates":
+        ensure => directory,
+        owner  => 'root',
+        group  => 0,
+        mode   => '0755',
+    }
+
+    -> $template_files.each |$template_file| {
         file { "${config_dir}/templates/0.tmpl" :
             owner   => root,
             group   => 0,
