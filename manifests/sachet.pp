@@ -51,7 +51,6 @@ class prometheus::sachet (
         download_extension => $download_extension,
         os                 => $os,
         arch               => $arch,
-        real_download_url  => $real_download_url,
         bin_dir            => $bin_dir,
         notify_service     => $notify_service,
         package_name       => $package_name,
