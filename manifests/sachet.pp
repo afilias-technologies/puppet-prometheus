@@ -84,11 +84,11 @@ class prometheus::sachet (
     }
 
     $template_files.each |$template_file| {
-        file { "${config_dir}/templates/0.tmpl" :
+        file { "${config_dir}/templates/${template_file}.values[0].tmpl" :
             owner   => root,
             group   => 0,
             mode    => '0644',
-            content => "${template_file}",
+            content => "${template_file}.values[0]",
             notify  => $service,
             require => File["${config_dir}/templates"],
         }
