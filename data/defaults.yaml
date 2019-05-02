@@ -321,7 +321,7 @@ prometheus::sachet::user: 'nobody'
 prometheus::sachet::version: '0.2.0'
 prometheus::sachet::install_method: 'file'
 prometheus::sachet::config_dir: '/etc/sachet'
-prometheus::rds_exporter::config_file: "%{hiera('prometheus::alertmanager::config_dir')}/config.yaml"
+prometheus::rds_exporter::config_file: "%{hiera('prometheus::rds_exporter::config_dir')}/config.yaml"
 prometheus::rds_exporter::config_dir: '/etc/rds_exporter'
 prometheus::rds_exporter::download_extension: 'tar.gz'
 prometheus::rds_exporter::download_url_base: 'https://example.com'
