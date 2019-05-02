@@ -1,6 +1,6 @@
-# Class: prometheus::sachet
+# Class: prometheus::rds_exporter
 #
-# This module manages the sachet messaging service for prometheus.
+# This module manages the rds_exporter service for prometheus.
 #
 class prometheus::rds_exporter (
     String $arch                   = $prometheus::real_arch,
@@ -26,7 +26,7 @@ class prometheus::rds_exporter (
     Boolean $restart_on_change     = true,
     Boolean $service_enable        = true,
     String $service_ensure         = 'running',
-    String $service_name           = 'sachet',
+    String $service_name           = 'rds_exporter',
     String $user,
     String $version,
 ) {
