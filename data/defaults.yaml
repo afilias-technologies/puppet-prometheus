@@ -1,4 +1,4 @@
-')}/a---
+---
 prometheus::configname: 'prometheus.yaml'
 prometheus::service_enable: true
 prometheus::service_ensure: 'running'
