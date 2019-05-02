@@ -6,7 +6,7 @@ class prometheus::sachet (
     String $arch                   = $prometheus::real_arch,
     String $bin_dir                = $prometheus::bin_dir,
     Hash $providers,
-    Hash $receivers,
+    Array $receivers,
     Array[String] $templates,
     String $config_file,
     String $config_mode            = $prometheus::config_mode,
@@ -39,6 +39,9 @@ class prometheus::sachet (
     }
 
     $options = "-config ${config_file} ${extra_options}"
+
+    # Make one hash from the three different config sections
+    $config_contents = deep_merge({"providers" => $providers }, deep_merge({"receivers" => $receivers}, {"templates" => $templates }))
 
     file { $config_file:
         ensure => present,
