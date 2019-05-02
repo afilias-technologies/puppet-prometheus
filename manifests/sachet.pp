@@ -7,7 +7,7 @@ class prometheus::sachet (
     String $bin_dir                = $prometheus::bin_dir,
     Hash $providers,
     Hash $receivers,
-    Array[String] templates,
+    Array[String] $templates,
     String $config_file,
     String $config_mode            = $prometheus::config_mode,
     String $download_extension,
