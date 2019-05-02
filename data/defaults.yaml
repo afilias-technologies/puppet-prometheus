@@ -1,4 +1,4 @@
----
+')}/a---
 prometheus::configname: 'prometheus.yaml'
 prometheus::service_enable: true
 prometheus::service_ensure: 'running'
@@ -321,3 +321,5 @@ prometheus::sachet::user: 'nobody'
 prometheus::sachet::version: '0.2.0'
 prometheus::sachet::install_method: 'file'
 prometheus::sachet::config_dir: '/etc/sachet'
+prometheus::rds_exporter::config_file: "%{hiera('prometheus::alertmanager::config_dir')}/config.yaml"
+prometheus::rds_exporter::config_dir: '/etc/rds_exporter'

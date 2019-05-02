@@ -32,3 +32,5 @@ prometheus::redis_exporter::addr:
   - 'localhost:6379'
 
 prometheus::sachet::config_dir: '/usr/local/etc/sachet'
+
+prometheus::rds_exporter::config_dir: '/usr/local/etc/rds_exporter'
