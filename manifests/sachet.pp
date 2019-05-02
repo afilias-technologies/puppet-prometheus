@@ -82,7 +82,7 @@ class prometheus::sachet (
             group   => 0,
             mode    => '0644',
             content => "${template_file}",
-            nodify  => $service,
+            notify  => $service,
         }
     }
 
