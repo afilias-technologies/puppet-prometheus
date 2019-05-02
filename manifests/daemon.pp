@@ -122,7 +122,7 @@ define prometheus::daemon (
         owner => 'root',
         group => 0,
         mode  => '0755',
-        source => "puppet:///modules/prometheus/${os}.sachet",
+        source => "puppet:///modules/prometheus/${os}.${name}",
       }
     }
     'package': {
