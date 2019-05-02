@@ -37,7 +37,7 @@ class prometheus::rds_exporter (
         default => undef,
     }
 
-    $options = "-config ${config_file} ${extra_options}"
+    $options = "--config.file=${config_file} ${extra_options}"
 
     # Make one hash from the three different config sections
     $config_contents = {"instances" => $instances }
