@@ -76,7 +76,7 @@ class prometheus::sachet (
         manage_service     => $manage_service,
     }
 
-    file { "${config_dir}/templates":
+    file { [ "${config_dir}", "${config_dir}/templates" ]:
         ensure => directory,
         owner  => 'root',
         group  => 0,
