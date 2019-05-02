@@ -5,6 +5,9 @@
 class prometheus::sachet (
     String $arch                   = $prometheus::real_arch,
     String $bin_dir                = $prometheus::bin_dir,
+    Hash $providers,
+    Hash $receivers,
+    Array[String] templates,
     String $config_file,
     String $config_mode            = $prometheus::config_mode,
     String $download_extension,
