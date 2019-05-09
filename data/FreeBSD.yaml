@@ -34,3 +34,5 @@ prometheus::redis_exporter::addr:
 prometheus::sachet::config_dir: '/usr/local/etc/sachet'
 
 prometheus::rds_exporter::config_dir: '/usr/local/etc/rds_exporter'
+
+prometheus::haproxy_exporter::install_method: 'url'
