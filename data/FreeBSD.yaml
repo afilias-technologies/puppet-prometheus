@@ -36,3 +36,9 @@ prometheus::sachet::config_dir: '/usr/local/etc/sachet'
 prometheus::rds_exporter::config_dir: '/usr/local/etc/rds_exporter'
 
 prometheus::haproxy_exporter::install_method: 'url'
+
+#by default package use user prometheus. if we use user from module (pushgatway) we have problems with permissions
+prometheus::pushgateway::user : 'prometheus'
+prometheus::pushgateway::group : 'prometheus'
+prometheus::pushgateway::manage_user : false
+prometheus::pushgateway::manage_group : false
