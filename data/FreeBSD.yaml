@@ -42,3 +42,4 @@ prometheus::pushgateway::user : 'prometheus'
 prometheus::pushgateway::group : 'prometheus'
 prometheus::pushgateway::manage_user : false
 prometheus::pushgateway::manage_group : false
+prometheus::pushgateway::extra_options : '-persistence.file=/var/db/pushgateway/persistent.data'
