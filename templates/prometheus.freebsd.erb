@@ -1,2 +1,4 @@
 prometheus_enable="YES"
 prometheus_config="/usr/local/etc/prometheus/prometheus.yaml"
+prometheus_data_dir="<%= scope.lookupvar('prometheus::server::localstorage') %>"
+prometheus_args="--storage.tsdb.retention.time=<%= scope.lookupvar('prometheus::server::storage_retention') %>"
