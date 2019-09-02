@@ -37,6 +37,8 @@ prometheus::rds_exporter::config_dir: '/usr/local/etc/rds_exporter'
 
 prometheus::haproxy_exporter::install_method: 'url'
 
+prometheus::nginx_vts_exporter::install_method: 'file'
+
 #by default package use user prometheus. if we use user from module (pushgatway) we have problems with permissions
 prometheus::pushgateway::user : 'prometheus'
 prometheus::pushgateway::group : 'prometheus'
