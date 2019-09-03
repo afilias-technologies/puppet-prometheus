@@ -100,13 +100,13 @@ class prometheus::nginx_vts_exporter(
 
   $real_download_url = pick($download_url,"${download_url_base}/download/v${version}/${package_name}-${version}.${os}-${arch}.${download_extension}")
   $notify_service = $restart_on_change ? {
-    true    => Service['nginx-vts-exporter'],
+    true    => Service['nginx_vts_exporter'],
     default => undef,
   }
 
   $options = "-nginx.scrape_uri=\"${nginx_scrape_uri}\" ${extra_options}"
 
-  prometheus::daemon { 'nginx-vts-exporter':
+  prometheus::daemon { 'nginx_vts_exporter':
     install_method     => $install_method,
     version            => $version,
     download_extension => $download_extension,
