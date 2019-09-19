@@ -85,6 +85,7 @@ class prometheus::nginx_vts_exporter(
   Boolean          $purge_config_dir  = true,
   Boolean          $restart_on_change = true,
   Boolean          $service_enable    = true,
+  String           $service_name      = 'nginx-vts-exporter',
   String           $service_ensure    = 'running',
   String           $init_style        = $prometheus::init_style,
   String           $install_method    = $prometheus::install_method,
@@ -100,13 +101,13 @@ class prometheus::nginx_vts_exporter(
 
   $real_download_url = pick($download_url,"${download_url_base}/download/v${version}/${package_name}-${version}.${os}-${arch}.${download_extension}")
   $notify_service = $restart_on_change ? {
-    true    => Service['nginx_vts_exporter'],
+    true    => Service[$service_name],
     default => undef,
   }
 
   $options = "-nginx.scrape_uri=\"${nginx_scrape_uri}\" ${extra_options}"
 
-  prometheus::daemon { 'nginx_vts_exporter':
+  prometheus::daemon { $service_name:
     install_method     => $install_method,
     version            => $version,
     download_extension => $download_extension,
